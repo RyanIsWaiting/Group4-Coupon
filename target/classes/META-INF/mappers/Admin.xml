@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icbc.group4.dao.IAdminDao">
+    
+    <resultMap id="AdminResult" type="com.icbc.group4.domain.Admin">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="account" property="account" jdbcType="INTEGER" />
+        <result column="password" property="password" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="login" resultMap="AdminResult">
+        SELECT admin_id as id FROM administrator where admin_username = #{account} and admin_password = #{password}
+    </select>
+
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icbc.group4.dao.ICategoryDao">
+    
+    <resultMap id="AllCategoriesResult" type="com.icbc.group4.domain.Category">
+        <result column="coupontype_id" property="categoryId" jdbcType="INTEGER" />
+        <result column="coupontype_name" property="couponName" jdbcType="VARCHAR" />
+        <result column="coupontype_picture" property="couponImage" jdbcType="VARCHAR" />
+        <result column="coupontype_number" property="maxAmount" jdbcType="INTEGER" />
+        <result column="coupontype_starttime" property="startTime" jdbcType="DATE" />
+        <result column="coupontype_endtime" property="endTime" jdbcType="DATE" />
+        <result column="merchant_id" property="merchantId" jdbcType="INTEGER" />
+        <result column="coupon_number" property="remainAmount" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="getAllCategories" resultMap="AllCategoriesResult">
+        SELECT * FROM coupontype
+    </select>
+
+</mapper>

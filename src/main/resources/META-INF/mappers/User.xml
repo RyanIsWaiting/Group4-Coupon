@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.icbc.group4.dao.IUserDao">
+    
+    <resultMap id="UserResult" type="com.icbc.group4.domain.User">
+        <result column="customer_id" property="userId" jdbcType="INTEGER" />
+        <result column="customer_name" property="userName" jdbcType="VARCHAR" />
+        <result column="customer_phonenumber" property="phoneNumber" jdbcType="VARCHAR" />
+        <result column="customer_identification" property="identityNumber" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="checkUser" resultMap="UserResult">
+        SELECT customer_id as userId FROM customer where 
+        (customer_phonenumber = #{phoneNumber} or customer_identification = #{identityNumber})
+    </select>
+    
+    <insert id="register">
+        INSERT INTO customer (
+          customer_name, customer_phonenumber, customer_identification
+        )
+        VALUES (
+        #{userName,jdbcType=VARCHAR},
+        #{phoneNumber,jdbcType=VARCHAR},
+        #{identityNumber,jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>
